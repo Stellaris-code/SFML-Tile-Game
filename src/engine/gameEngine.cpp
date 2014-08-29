@@ -25,7 +25,6 @@ bool GameEngine::init(const std::string winName)
     m_sfmlWindow.setFramerateLimit(framerate_limit);
     m_sfmlWindow.setKeyRepeatEnabled(false); // disable OS key repeat calls
 
-    loadImages();
     loadLevel();
 
     m_camera.initialize(m_stageWidth, m_stageHeight, 1.0f);
@@ -41,6 +40,8 @@ bool GameEngine::init(const std::string winName)
     m_screenPrint.setCharacterSize(12);
 
     m_mouseDown = false;
+
+    m_imageManager.setTileSize(m_tileSize);
 
     return true;
 }
@@ -245,34 +246,7 @@ void GameEngine::update()
 {
     m_camera.update();
 }
-bool GameEngine::loadImages()
-{
-    sf::Texture texture;
-
-    if (!texture.loadFromFile("wood.png"))
-        return false;
-
-    m_imageManager.addTextureAt(texture, 0);
-
-    if (!texture.loadFromFile("empty.png"))
-        return false;
-
-    m_imageManager.addTextureAt(texture, 0);
-
-    return true;
-}
 void GameEngine::loadLevel()
 {
-    Tile tile;
-    for(size_t y {}; y < 40; y++)
-    {
-        for(size_t x {}; x < 40; x++)
-        {
-            if(y % 4 == 0)
-                tile.initialize(m_imageManager.textureAt(1));
-            else
-                tile.initialize(m_imageManager.textureAt(0));
-            m_currentLevel.addTile(x, y, tile);
-        }
-    }
+    m_currentLevel.loadLevel("misc/level1.xml", m_imageManager);
 }

@@ -23,6 +23,8 @@ public:
           m_tileSize(tileSize), m_currentLevel(40, 40)
     {}
 
+    GameEngine() = default;
+
     ~GameEngine() = default;
 
     void run(const std::string winName);
@@ -33,7 +35,6 @@ private:
     void render();
     void processInput();
     void update();
-    bool loadImages();
     void loadLevel();
 
 private:

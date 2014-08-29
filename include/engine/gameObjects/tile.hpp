@@ -2,6 +2,7 @@
 #define TILE_HPP
 
 #include <SFML/Graphics.hpp>
+
 class Tile
 {
 
