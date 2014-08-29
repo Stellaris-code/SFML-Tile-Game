@@ -11,7 +11,7 @@ public:
     Camera();
     ~Camera();
     void initialize(unsigned int w, unsigned int h, float speed);
-    void setPanConstraints(sf::IntRect * panConstraints);
+    void setPanConstraints(sf::IntRect& panConstraints);
 
     void pan(unsigned int offsetX, unsigned int offsetY);
 

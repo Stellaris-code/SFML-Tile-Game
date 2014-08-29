@@ -2,7 +2,7 @@
 #define LEVEL_HPP
 
 #include <vector>
-#include <functionnal>
+#include <functional>
 
 #include "engine/gameObjects/tile.hpp"
 #include "engine/imageManager.hpp"
@@ -12,6 +12,7 @@ class Level
 
 public:
     Level(unsigned int w, unsigned int h) { setDimensions(w, h); }
+    Level() = default;
     ~Level() = default;
     void addTile(unsigned int x, unsigned int y, Tile& tile);
     Tile& getTile(unsigned int x, unsigned int y);
@@ -20,7 +21,7 @@ public:
     int height();
 private:
     //A 2D array of Tile pointers
-    vector<vector<std::reference_wrapper<Tile>>> m_map;
+    std::vector<std::vector<std::reference_wrapper<Tile>>> m_map;
     //Width and height of level (in tiles)
     unsigned int m_w;
     unsigned int m_h;

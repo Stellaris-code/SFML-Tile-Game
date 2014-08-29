@@ -11,8 +11,8 @@ public:
     ImageManager() = default;
     ~ImageManager() = default;
 
-    void addTexture(sf::Texture & texture);
-    sf::Texture & getTexture(unsigned int index);
+    void addTextureAt(sf::Texture & texture, unsigned int index);
+    sf::Texture & textureAt(unsigned int index);
 
 private:
     std::vector<sf::Texture> textureList;
